@@ -1,0 +1,24 @@
+<section>
+  <h1>PDF Library</h1>
+  <p>Click “Read” to open in your browser, or “Download” to save a copy.</p>
+
+  {{#if pdfs.length}}
+    <ul class="cards">
+      {{#each pdfs}}
+        <li class="card">
+          <h3>{{pretty this}}</h3>
+          <div class="links">
+            <a class="link" href="/pdfs/view.html?file={{encode this}}">Read</a> •
+            <a class="link" href="/pdfs/{{encode this}}" download>Download</a>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No PDFs found yet. Drop files into <code>/public/pdfs</code> and refresh.</p>
+  {{/if}}
+
+  <p class="note" style="margin-top:12px">
+    Tip: use names like <code>my-first-upload.pdf</code>. If you keep spaces, links still work (we URL-encode them).
+  </p>
+</section>

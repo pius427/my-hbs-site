@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>View PDF</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>PDF Viewer</h1>
+    <p><small>If the preview doesn’t load, use the download link below.</small></p>
+
+    <div class="viewer" style="height:80vh;">
+      <object id="pdfFrame" data="" type="application/pdf" width="100%" height="100%">
+        <p>PDF preview unavailable. <a id="downloadLink" href="#" download>Download instead</a>.</p>
+      </object>
+    </div>
+
+    <p style="margin-top:12px">
+      ← <a class="link" href="/pdfs">Back to PDF Library</a>
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const file = params.get('file');
+      if (!file) return;
+
+      const full = '/pdfs/' + file;
+      document.getElementById('pdfFrame').setAttribute('data', full + '#view=FitH');
+      document.getElementById('downloadLink').setAttribute('href', full);
+      document.title = 'View: ' + file;
+    })();
+  </script>
+</body>
+</html>
