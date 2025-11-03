@@ -5,3 +5,8 @@ node_modules/
 dist/
 build/
 .env
+node_modules/
+.vercel/
+dist/
+build/
+.env
